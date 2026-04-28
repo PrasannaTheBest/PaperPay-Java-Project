@@ -1,0 +1,26 @@
+# Next.js
+node_modules/
+.next/
+out/
+build/
+.env*.local
+*.log
+
+# Java/Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.db
+paperpay-backend/data/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

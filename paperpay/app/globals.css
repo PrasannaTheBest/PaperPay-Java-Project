@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Patrick+Hand+SC&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary Palette — warm paper tones */
+    --paper-white: #FEFDF8;
+    --paper-cream: #F9F5E7;
+    --paper-warm: #F4EDD3;
+    --paper-tan: #E8DFC4;
+    --paper-aged: #D4C9A8;
+  
+    /* Ink Colors */
+    --ink-dark: #1A1611;
+    --ink-medium: #3D3420;
+    --ink-light: #6B5B3E;
+    --ink-faint: #9B8B6E;
+  }
+
+  body {
+    @apply bg-paper-white text-ink-dark font-body antialiased;
+    /* Paper texture background */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+}
+
+@layer utilities {
+  .card-organic {
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  }
+  .card-sketch {
+    border-radius: 2px 8px 2px 6px / 8px 2px 6px 2px;
+  }
+  .btn-wobbly {
+    border-radius: 12px 4px 10px 6px / 4px 12px 6px 10px;
+  }
+  .sticky-note-shape {
+    border-radius: 3px 3px 3px 3px / 3px 3px 15px 3px;
+    transform: rotate(-1.5deg);
+  }
+
+  .paper-texture {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+
+  .sketch-card {
+    border: 2px solid var(--ink-dark);
+    @apply shadow-sketch;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .sketch-card:hover {
+    transform: translate(-2px, -2px);
+    @apply shadow-sketch-lg;
+  }
+}
