@@ -202,26 +202,3 @@
     *   **Where**: Repository Interfaces and Service Layers.
     *   **How**: The Controllers only know *what* the services do (e.g., `transactionService.send()`), not *how* they do it (the SQL or internal logic). This hides complexity.
 
----
-
-## 🎓 Viva Preparation Section
-
-### **Common Questions & Strong Answers**
-
-**Q: What is the significance of the `@Transactional` annotation?**
-*   **Answer**: It ensures "Atomicity". In a money transfer, we have two steps: debiting one account and crediting another. If one fails, the other must not happen. `@Transactional` ensures that either both steps succeed or both are rolled back, preventing money from "disappearing."
-
-**Q: Why did you use JWT for authentication instead of Sessions?**
-*   **Answer**: JWT is **stateless**. The server doesn't need to store session data in memory. This makes the system more scalable because any instance of the backend can validate the token using the secret key. It is also better for mobile app integration.
-
-**Q: How does your system handle security vulnerabilities like SQL Injection?**
-*   **Answer**: By using **Spring Data JPA**. JPA uses "Prepared Statements" behind the scenes, which automatically sanitizes user input, making it impossible for a user to inject malicious SQL code.
-
-**Q: Explain your Fraud Detection logic.**
-*   **Answer**: It uses a "Rule-Based" engine. Currently, it monitors three things: 1. Large transactions (over ₹50,000), 2. Rapid-fire transactions (more than 5 in a minute), and 3. High failure rates. These trigger alerts that are stored in the database for admin review.
-
-**Q: Why did you choose React/Next.js for the frontend?**
-*   **Answer**: Next.js provides excellent performance through Server-Side Rendering and a clean folder-based routing system. It allows us to build a highly responsive, single-page application (SPA) feel while maintaining good SEO and fast load times.
-
-**Q: How do you ensure the 3D "Sketchbook" design is responsive?**
-*   **Answer**: We use **Tailwind CSS** with responsive utilities (like `md:`, `lg:`). The "3D" effects (shadows and rotations) are applied using relative CSS units and Framer Motion, which adjust smoothly across different screen sizes.
